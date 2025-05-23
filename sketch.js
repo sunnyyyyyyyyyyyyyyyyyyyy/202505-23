@@ -24,13 +24,14 @@ function draw() {
   background(220);
   image(video, 0, 0, width, height);
 
-  stroke(255, 105, 180);
-  strokeWeight(15);
+  stroke(255, 105, 180); // 粉紅色
+  strokeWeight(15); // 線條粗細
   noFill();
 
   if (predictions.length > 0) {
     const keypoints = predictions[0].scaledMesh;
 
+    // 繪製粉紅色線條
     beginShape();
     for (let i = 0; i < points.length; i++) {
       const index = points[i];
