@@ -5,13 +5,11 @@ let points = [409, 270, 269, 267, 0, 37, 39, 40, 185, 61, 146, 91, 181, 84, 17, 
               76, 77, 90, 180, 85, 16, 315, 404, 320, 307, 306, 408, 304, 303, 302, 11, 72, 73, 74, 184];
 
 function setup() {
-  // 設定畫布大小為 640x480 並置中
   createCanvas(640, 480).parent('canvas-container');
   video = createCapture(VIDEO);
   video.size(width, height);
   video.hide();
 
-  // 啟動 Facemesh 模型
   facemesh = ml5.facemesh(video, modelReady);
   facemesh.on('predict', results => {
     predictions = results;
@@ -26,15 +24,13 @@ function draw() {
   background(220);
   image(video, 0, 0, width, height);
 
-  // 設定粉紅色線條樣式
-  stroke(255, 105, 180); // 粉紅色
-  strokeWeight(15); // 線條粗細
+  stroke(255, 105, 180);
+  strokeWeight(15);
   noFill();
 
   if (predictions.length > 0) {
     const keypoints = predictions[0].scaledMesh;
 
-    // 繪製粉紅色線條
     beginShape();
     for (let i = 0; i < points.length; i++) {
       const index = points[i];
