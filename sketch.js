@@ -24,8 +24,13 @@ function modelReady() {
 
 function draw() {
   background(220);
+
+  // 調整畫面，避免左右相反
+  translate(width, 0);
+  scale(-1, 1);
   image(video, 0, 0, width, height);
 
+  // 設定粉紅色線條樣式
   stroke(255, 105, 180); // 粉紅色
   strokeWeight(15); // 線條粗細
   noFill();
@@ -33,7 +38,7 @@ function draw() {
   if (predictions.length > 0) {
     const keypoints = predictions[0].scaledMesh;
 
-    // 繪製嘴唇的粉紅色線條
+    // 繪製粉紅色線條
     beginShape();
     for (let i = 0; i < points.length; i++) {
       const index = points[i];
