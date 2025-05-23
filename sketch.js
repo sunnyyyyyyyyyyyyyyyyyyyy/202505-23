@@ -24,10 +24,6 @@ function modelReady() {
 
 function draw() {
   background(220);
-
-  // 調整畫面，避免左右相反
-  translate(width, 0);
-  scale(-1, 1);
   image(video, 0, 0, width, height);
 
   // 設定粉紅色線條樣式
